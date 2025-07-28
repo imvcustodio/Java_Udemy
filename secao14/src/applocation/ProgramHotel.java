@@ -39,7 +39,6 @@ public class ProgramHotel {
             }else if(!checkIn.before(checkOut)){
                 System.out.println("Error in reservation: Check-out must be before check-in date");
             }else{
-                reservation.updateDates(checkIn, checkOut);
                 System.out.println("Reservation: "+reservation);
             }
         }
