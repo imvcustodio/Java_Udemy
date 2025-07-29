@@ -32,15 +32,16 @@ public class ProgramHotel {
             System.out.print("Check-out date (dd/MM/yyyy): ");
             checkOut = sdf.parse(scanner.next());
 
-            Date now = new Date();
-
-            if(checkIn.before(now) || checkOut.before(now)){
-                System.out.println("Error in reservation: Reservations dates for updates must be in the future");
-            }else if(!checkIn.before(checkOut)){
-                System.out.println("Error in reservation: Check-out must be before check-in date");
-            }else{
-                System.out.println("Reservation: "+reservation);
-            }
+            reservation.updateDates(checkIn, checkOut);
+            System.out.println("Reservation: " + reservation);
+        }catch (ParseException e) {
+            System.out.println("Invalid data format");
+        }catch (DomainException e) {
+            System.out.println("Error in reservation"+ e.getMessage());/*o getMessage() e a string que eu passei como
+            parametro la no meu tratamento de exceção da classe que eu setei como DomainException que no caso e o meu
+            Reservation*/
+        }catch (RuntimeException e) {
+            System.out.println("Unexpected error");
         }
 
 
